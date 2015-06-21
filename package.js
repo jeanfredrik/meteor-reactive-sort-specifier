@@ -1,9 +1,8 @@
 Package.describe({
   name: 'jeanfredrik:reactive-sort-specifier',
-  version: '0.1.0',
-  summary: 'Create sort specifiers for your collection.find calls that are reactive and easy to manipulate. Perfect for sortable tables',
-  // URL to the Git repository containing the source code for this package.
-  git: '',
+  version: '0.1.1',
+  summary: 'Create sort specifiers for your collection.find calls that are reactive and easy to manipulate',
+  git: 'https://github.com/jeanfredrik/meteor-reactive-sort-specifier',
   documentation: 'README.md'
 });
 
