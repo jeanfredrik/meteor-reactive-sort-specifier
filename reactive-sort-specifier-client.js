@@ -54,14 +54,11 @@ var normalize = function(specifier) {
 /**
  * @constructor SortSpecifier
  * @public
- * @param options {Object} Options
- * @param options.fields {Object} A list of fields
- * @param [options.defaultSort] {MongoSortSpecifier} The default sort order
- * @param [options.toggleReset] {Boolean} Whether `toggle()` also should reset the sort order
- * @param [options.append] {'previous'|'default'|false} What to append to the value when calling `toggle()` or `set()`. `false` means nothing.
- * @returns {Boolean}
- *
- * Checks if the value matches a Mongo sort specifier or a field and optional direction
+ * @param {Object} options Options
+ * @param {Object} options.fields A list of fields
+ * @param {MongoSortSpecifier} [options.defaultSort] The default sort order
+ * @param {Boolean} [options.toggleReset] Whether `toggle()` also should reset the sort order
+ * @param {'previous'|'default'|false} [options.append] What to append to the value when calling `toggle()` or `set()`. `false` means nothing.
  */
 SortSpecifier = function(options) {
 	options = options || {};
@@ -141,8 +138,8 @@ SortSpecifier.prototype._equals = function(sortSpecifierString) {
  * @method sortSpecifier.equals
  * @public
  * @reactive
- * @param valueOrField {MongoSortSpecifier|String} A valid Mongo sort specifier or a field name
- * @param [direction] {String} Combined with a field name, a direction (`'asc'` or `'desc'`) that the field could be sorted in
+ * @param {MongoSortSpecifier|String} valueOrField A valid Mongo sort specifier or a field name
+ * @param {String} [direction] Combined with a field name, a direction (`'asc'` or `'desc'`) that the field could be sorted in
  * @returns {Boolean}
  *
  * Checks if the value matches a Mongo sort specifier or a field and optional direction
@@ -170,7 +167,7 @@ SortSpecifier.prototype.equals = function(field, dir) {
 /**
  * @method sortSpecifier.toggle
  * @public
- * @param field {String} A field name
+ * @param {String} field A field name
  * @returns {undefined}
  *
  * Toggles sort on a specific field
@@ -210,10 +207,10 @@ SortSpecifier.prototype.get = function() {
 }
 
 /**
- * @method sortSpecifier.toggle
+ * @method sortSpecifier.set
  * @public
- * @param valueOrField {MongoSortSpecifier|String} A valid Mongo sort specifier or a field name
- * @param [direction] {String} Combined with a field name, a direction (`'asc'` or `'desc'`) that the field could be sorted in
+ * @param {MongoSortSpecifier|String} valueOrField A valid Mongo sort specifier or a field name
+ * @param {String} [direction] Combined with a field name, a direction (`'asc'` or `'desc'`) that the field could be sorted in
  * @returns {undefined}
  *
  * Sets the value to a Mongo sort specifier or a field and optional direction
@@ -274,13 +271,40 @@ SortSpecifier.prototype._matchingValuesWithDeps = function(value) {
 
 /**
  * @property SortSpecifier.defaultOptions
+ * @type {Object}
+ * @namespace SortSpecifier
  * @public
- * @param defaultSort {MongoSortSpecifier} The default sort order
- * @param toggleReset {Boolean} Whether `toggle()` also should reset the sort order
- * @param append {'previous'|'default'|false} What to append to the value when calling `toggle()` or `set()`. `false` means nothing.
  *
  * Used as options if some options are missing when calling `new SortSpecifier(options)`
  */
+
+/**
+ * @property SortSpecifier.defaultOptions.defaultSort
+ * @type {MongoSortSpecifier}
+ * @namespace SortSpecifier
+ * @public
+ *
+ * The default sort order
+ */
+
+/**
+ * @property SortSpecifier.defaultOptions.toggleReset
+ * @type {Boolean}
+ * @namespace SortSpecifier
+ * @public
+ *
+ * Whether `toggle()` also should reset the sort order
+ */
+
+/**
+ * @property SortSpecifier.defaultOptions.append
+ * @type {'previous'|'default'|false}
+ * @namespace SortSpecifier
+ * @public
+ *
+ * Used as options if some options are missing when calling `new SortSpecifier(options)`
+ */
+
 SortSpecifier.defaultOptions = {
 	fields: {},
 	defaultSort: [],

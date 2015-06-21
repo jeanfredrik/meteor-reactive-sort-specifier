@@ -55,38 +55,34 @@ into
 
 -
 
-### <a name="SortSpecifier"></a>new SortSpecifier({Object}, {Object}, {MongoSortSpecifier}, {Boolean}, {'previous'|'default'|false})&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+### <a name="SortSpecifier"></a>new SortSpecifier(options)&nbsp;&nbsp;<sub><i>Client</i></sub> ###
 
 
 __Arguments__
 
-* __{Object}__ *{[options](#options)}*  
+* __options__ *{Object}*  
 
  Options
 
-* __{Object}__ *{[options.fields](#options.fields)}*  
+    * __fields__ *{Object}*  
 
- A list of fields
+    A list of fields
 
-* __{MongoSortSpecifier}__ *{[options.defaultSort]}*  
+    * __defaultSort__ *{[MongoSortSpecifier](#MongoSortSpecifier)}*  (Optional)
 
- The default sort order
+    The default sort order
 
-* __{Boolean}__ *{[options.toggleReset]}*  
+    * __toggleReset__ *{Boolean}*  (Optional)
 
- Whether `toggle()` also should reset the sort order
+    Whether `toggle()` also should reset the sort order
 
-* __{'previous'|'default'|false}__ *{[options.append]}*  
+    * __append__ *{['previous'](#'previous')|['default'](#'default')|[false](#false)}*  (Optional)
 
- What to append to the value when calling `toggle()` or `set()`. `false` means nothing.
-
-
-__Returns__  *{Boolean}*
+    What to append to the value when calling `toggle()` or `set()`. `false` means nothing.
 
 
-Checks if the value matches a Mongo sort specifier or a field and optional direction
 
-> ```SortSpecifier = function(options) { ...``` [reactive-sort-specifier-client.js:66](reactive-sort-specifier-client.js#L66)
+> ```SortSpecifier = function(options) { ...``` [reactive-sort-specifier-client.js:63](reactive-sort-specifier-client.js#L63)
 
 
 -
@@ -100,22 +96,22 @@ __Returns__  *{undefined}*
 
 Resets the value to `defaultSort`
 
-> ```SortSpecifier.prototype.reset = function() { ...``` [reactive-sort-specifier-client.js:131](reactive-sort-specifier-client.js#L131)
+> ```SortSpecifier.prototype.reset = function() { ...``` [reactive-sort-specifier-client.js:128](reactive-sort-specifier-client.js#L128)
 
 
 -
 
-### <a name="sortSpecifier.equals"></a>*sortSpecifier*.equals({MongoSortSpecifier|String}, {String})&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+### <a name="sortSpecifier.equals"></a>*sortSpecifier*.equals(valueOrField, [direction])&nbsp;&nbsp;<sub><i>Client</i></sub> ###
 
 *This method __equals__ is defined in `sortSpecifier`*
 
 __Arguments__
 
-* __{MongoSortSpecifier|String}__ *{[valueOrField](#valueOrField)}*  
+* __valueOrField__ *{[MongoSortSpecifier](#MongoSortSpecifier)|String}*  
 
  A valid Mongo sort specifier or a field name
 
-* __{String}__ *{[direction]}*  
+* __direction__ *{String}*  (Optional)
 
  Combined with a field name, a direction (`'asc'` or `'desc'`) that the field could be sorted in
 
@@ -125,18 +121,18 @@ __Returns__  *{Boolean}*  __(is reactive)__
 
 Checks if the value matches a Mongo sort specifier or a field and optional direction
 
-> ```SortSpecifier.prototype.equals = function(field, dir) { ...``` [reactive-sort-specifier-client.js:150](reactive-sort-specifier-client.js#L150)
+> ```SortSpecifier.prototype.equals = function(field, dir) { ...``` [reactive-sort-specifier-client.js:147](reactive-sort-specifier-client.js#L147)
 
 
 -
 
-### <a name="sortSpecifier.toggle"></a>*sortSpecifier*.toggle({String})&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+### <a name="sortSpecifier.toggle"></a>*sortSpecifier*.toggle(field)&nbsp;&nbsp;<sub><i>Client</i></sub> ###
 
 *This method __toggle__ is defined in `sortSpecifier`*
 
 __Arguments__
 
-* __{String}__ *{[field](#field)}*  
+* __field__ *{String}*  
 
  A field name
 
@@ -146,7 +142,7 @@ __Returns__  *{undefined}*
 
 Toggles sort on a specific field
 
-> ```SortSpecifier.prototype.toggle = function(field) { ...``` [reactive-sort-specifier-client.js:178](reactive-sort-specifier-client.js#L178)
+> ```SortSpecifier.prototype.toggle = function(field) { ...``` [reactive-sort-specifier-client.js:175](reactive-sort-specifier-client.js#L175)
 
 
 -
@@ -161,22 +157,22 @@ A valid Mongo sort specifier that you can use in `collection.find`
 
 Returns the current value
 
-> ```SortSpecifier.prototype.get = function() { ...``` [reactive-sort-specifier-client.js:207](reactive-sort-specifier-client.js#L207)
+> ```SortSpecifier.prototype.get = function() { ...``` [reactive-sort-specifier-client.js:204](reactive-sort-specifier-client.js#L204)
 
 
 -
 
-### <a name="sortSpecifier.toggle"></a>*sortSpecifier*.toggle({MongoSortSpecifier|String}, {String})&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+### <a name="sortSpecifier.set"></a>*sortSpecifier*.set(valueOrField, [direction])&nbsp;&nbsp;<sub><i>Client</i></sub> ###
 
-*This method __toggle__ is defined in `sortSpecifier`*
+*This method __set__ is defined in `sortSpecifier`*
 
 __Arguments__
 
-* __{MongoSortSpecifier|String}__ *{[valueOrField](#valueOrField)}*  
+* __valueOrField__ *{[MongoSortSpecifier](#MongoSortSpecifier)|String}*  
 
  A valid Mongo sort specifier or a field name
 
-* __{String}__ *{[direction]}*  
+* __direction__ *{String}*  (Optional)
 
  Combined with a field name, a direction (`'asc'` or `'desc'`) that the field could be sorted in
 
@@ -186,33 +182,54 @@ __Returns__  *{undefined}*
 
 Sets the value to a Mongo sort specifier or a field and optional direction
 
-> ```SortSpecifier.prototype.set = function(valueOrField, dir) { ...``` [reactive-sort-specifier-client.js:221](reactive-sort-specifier-client.js#L221)
+> ```SortSpecifier.prototype.set = function(valueOrField, dir) { ...``` [reactive-sort-specifier-client.js:218](reactive-sort-specifier-client.js#L218)
 
 
 -
 
-### <a name="SortSpecifier.defaultOptions"></a>*SortSpecifier*.defaultOptions {function}&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+### <a name="SortSpecifier.defaultOptions"></a>*SortSpecifier*.defaultOptions {Object}&nbsp;&nbsp;<sub><i>Client</i></sub> ###
 
 *This property __defaultOptions__ is defined in `SortSpecifier`*
-
-__Arguments__
-
-* __{MongoSortSpecifier}__ *{[defaultSort](#defaultSort)}*  
-
- The default sort order
-
-* __{Boolean}__ *{[toggleReset](#toggleReset)}*  
-
- Whether `toggle()` also should reset the sort order
-
-* __{'previous'|'default'|false}__ *{[append](#append)}*  
-
- What to append to the value when calling `toggle()` or `set()`. `false` means nothing.
-
 
 
 Used as options if some options are missing when calling `new SortSpecifier(options)`
 
-> ```SortSpecifier.defaultOptions = { ...``` [reactive-sort-specifier-client.js:284](reactive-sort-specifier-client.js#L284)
+> ```SortSpecifier.defaultOptions = { ...``` [reactive-sort-specifier-client.js:308](reactive-sort-specifier-client.js#L308)
+
+
+-
+
+### <a name="SortSpecifier.defaultOptions.defaultSort"></a>*SortSpecifierdefaultOptions*.defaultSort {MongoSortSpecifier}&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+
+*This property __defaultSort__ is defined in `SortSpecifier.defaultOptions`*
+
+
+The default sort order
+
+> ```SortSpecifier.defaultOptions = { ...``` [reactive-sort-specifier-client.js:308](reactive-sort-specifier-client.js#L308)
+
+
+-
+
+### <a name="SortSpecifier.defaultOptions.toggleReset"></a>*SortSpecifierdefaultOptions*.toggleReset {Boolean}&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+
+*This property __toggleReset__ is defined in `SortSpecifier.defaultOptions`*
+
+
+Whether `toggle()` also should reset the sort order
+
+> ```SortSpecifier.defaultOptions = { ...``` [reactive-sort-specifier-client.js:308](reactive-sort-specifier-client.js#L308)
+
+
+-
+
+### <a name="SortSpecifier.defaultOptions.append"></a>*SortSpecifierdefaultOptions*.append {'previous'|'default'|false}&nbsp;&nbsp;<sub><i>Client</i></sub> ###
+
+*This property __append__ is defined in `SortSpecifier.defaultOptions`*
+
+
+Used as options if some options are missing when calling `new SortSpecifier(options)`
+
+> ```SortSpecifier.defaultOptions = { ...``` [reactive-sort-specifier-client.js:308](reactive-sort-specifier-client.js#L308)
 
 
