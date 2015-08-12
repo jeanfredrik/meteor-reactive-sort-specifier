@@ -38,7 +38,7 @@ Then when you call `postsSort.toggle('name')`, `postsSort.get()` will return `[[
 | 3.  | `toggle('name')`         | `[]`                                               |
 | 4.  | `toggle('publishedAt')`  | `[['publishedAt', 'desc']]`                        |
 | 5.  | `toggle('publishedAt')`  | `[['publishedAt', 'asc']]`                         |
-| 6.  | `toggle('createdAt')`    | `[['createdAt', 'desc'], ['publishedAt', 'desc']]` |
+| 6.  | `toggle('createdAt')`    | `[['createdAt', 'desc'], ['publishedAt', 'asc']]`  |
 | 7.  | `toggle('createdAt')`    | `[]`                                               |
 
 This behavior corresponds with the conventional behavior of sortable tables where you click the column headers to sort the rows. In `fields` we specify `name` as `"asc"`, which means it will sort A-Z on the first click/toggle and then Z-A on the second. A third click will reset the sort to the original value (this behavior can be changed. See below).

@@ -119,6 +119,16 @@ SortSpecifier = function(options) {
 }
 
 /**
+ * @method sortSpecifier.hasField
+ * @public
+ * @param {String} fieldName A field name to look for
+ * @returns {Boolean} True if the field name is in the options
+ */
+SortSpecifier.prototype.hasField = function(fieldName) {
+	return _.has(this._fields, fieldName);
+}
+
+/**
  * @method sortSpecifier.reset
  * @public
  * @returns {undefined}
@@ -128,6 +138,7 @@ SortSpecifier = function(options) {
 SortSpecifier.prototype.reset = function() {
 	this.set(undefined);
 }
+
 SortSpecifier.prototype._equals = function(sortSpecifierString) {
 	this._ensureValueDep(sortSpecifierString);
 	this._equalsDeps[sortSpecifierString].depend();
@@ -150,7 +161,7 @@ SortSpecifier.prototype.equals = function(field, dir) {
 		if(dir == undefined) {
 			var field = self._fields[field];
 			var fieldValues = field && field.values;
-			return _.some(self._fieldValues || [], function(fieldValue) {
+			return _.some(fieldValues || [], function(fieldValue) {
 				return fieldValue && self._equals(fieldValue);
 			});
 		} else {
