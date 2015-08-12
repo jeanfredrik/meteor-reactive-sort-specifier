@@ -150,7 +150,7 @@ SortSpecifier.prototype.equals = function(field, dir) {
 		if(dir == undefined) {
 			var field = self._fields[field];
 			var fieldValues = field && field.values;
-			return _.some(self._fieldValues || [], function(fieldValue) {
+			return _.some(fieldValues || [], function(fieldValue) {
 				return fieldValue && self._equals(fieldValue);
 			});
 		} else {
